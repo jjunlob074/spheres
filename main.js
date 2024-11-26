@@ -6,8 +6,8 @@ const scene = new THREE.Scene();
 scene.background = new THREE.Color(0x000000); // Fondo oscuro para destacar colores
 
 // Configuración de la cámara
-const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
-camera.position.set(0, 0, 20);
+const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 1000);
+camera.position.set(0, 10, 20);
 
 // Configuración del renderer
 const renderer = new THREE.WebGLRenderer({ antialias: true });
@@ -42,7 +42,7 @@ const areaLight = new THREE.RectAreaLight(0x0000ff, 5, 10, 10); // Luz azul de �
 areaLight.position.set(0, 5, 0);
 areaLight.lookAt(new THREE.Vector3(0, 0, 0));
 scene.add(areaLight);
-const containerSize = 5;
+const containerSize = 4;
 // Crear una esfera de contenedor
 const sphereGeometry = new THREE.SphereGeometry(containerSize, 24, 24);
 const containerMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff, wireframe: true, transparent: true, opacity: 0.05 });
@@ -56,7 +56,7 @@ world.gravity.set(0, 0, 0); // Sin gravedad para simular movimiento libre
 // Crear múltiples esferas
 const spheres = [];
 const sphereBodies = [];
-const sphereRadius = 0.3; // Radio de las esferas
+const sphereRadius = 0.25; // Radio de las esferas
 const numSpheres = 100; // Número de esferas
 
 for (let i = 0; i < numSpheres; i++) {
@@ -162,7 +162,7 @@ function updatePulses(delta) {
           .vsub(mesh.position)
           .unit();
         sphereBodies[index].velocity.vadd(
-          direction.scale(5),
+          direction.scale(3),
           sphereBodies[index].velocity
         );
       }
